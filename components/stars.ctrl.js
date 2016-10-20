@@ -31,13 +31,30 @@
 					$scope.stars.push(star);
 					$scope.star = {};
 					$scope.closeSidebar();
-					$mdToast.show(
+					showToast("Star saved!");
+				}
+			}
+
+			$scope.editStar = function(star) {
+				$scope.editing = true;
+				$scope.openSidebar();
+				$scope.star = star;
+			}
+
+			$scope.saveEdit = function(){
+				$scope.editing = false;
+				$scope.star = {};
+				$scope.closeSidebar();
+				showToast("Edit saved!");
+			}
+
+			function showToast(message) {
+				$mdToast.show(
 						$mdToast.simple()
-							.content("Star saved!")
+							.content(message)
 							.position('top, right')
 							.hideDelay(3000)
 					);
-				}
 			}
 
 		});

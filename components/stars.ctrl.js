@@ -4,7 +4,7 @@
 
 	angular
 		.module('ngStars')
-		.controller('starsCtrl', function($scope, $http, starsFactory, $mdSidenav, $mdToast){
+		.controller('starsCtrl', function($scope, $http, starsFactory, $mdSidenav, $mdToast, $mdDialog){
 
 			starsFactory.getStars().then(function(response){
 				$scope.stars = response.data;
@@ -46,6 +46,20 @@
 				$scope.star = {};
 				$scope.closeSidebar();
 				showToast("Edit saved!");
+			}
+
+			$scope.deleteStar = function(event, star){
+
+				var confirm = $mdDialog.confirm()
+								.title('Are you sure to delelte ' + star.title + '?')
+								.ok('Yes')
+								.cancel('No')
+								.targetEvent(event);
+				$mdDialog.show(confirm).then(function(){
+					var index = $scope.stars.indexOf(star);
+					$scope.stars.splice(index, 1);
+				});
+				
 			}
 
 			function showToast(message) {

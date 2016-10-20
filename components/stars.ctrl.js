@@ -8,6 +8,7 @@
 
 			starsFactory.getStars().then(function(response){
 				$scope.stars = response.data;
+				$scope.categories = getCategories($scope.stars);
 
 			});
 
@@ -16,6 +17,7 @@
 				phone: "(555)555-5555",
 				email:"starTech@gmail.com"
 			}
+
 
 			$scope.openSidebar = function(){
 				$mdSidenav('left').open();//becuase our md-component-id is left
@@ -69,6 +71,18 @@
 							.position('top, right')
 							.hideDelay(3000)
 					);
+			}
+
+			function getCategories(stars) {
+				var categories = [];
+
+				angular.forEach(stars, function(item){
+					angular.forEach(item.categories, function(category){
+						categories.push(category);
+					});
+				});
+
+				return _.uniq(categories);
 			}
 
 		});

@@ -1,31 +1,20 @@
-// angular
-// 	.module('ngStars', ['ngMaterial'])
-// 	.config(function($mdThemingProvider){
-
-// 		$mdThemingProvider.theme('default')
-// 			.primaryPalette('teal')
-// 			.accentPalette('orange');
-
-// 	})
-// 	.directive('helloWorld', function(){
-// 		return {
-// 			template:'<h1>hiiiiii</h1>'
-// 		}
-// 	});
-
 
 angular
-	.module('ngStars', ['ngMaterial'])
-	.config(function($mdThemingProvider){
+	.module('ngStars', ['ngMaterial', 'ui.router'])
+	.config(function($mdThemingProvider, $stateProvider){
 
 		$mdThemingProvider.theme('default')
 			.primaryPalette('teal')
 			.accentPalette('orange');
 
-	})
-	.directive('helloWorld', function(){
-		return {
-			template:'<h1>hiiiiii</h1>'
-		}
+		$stateProvider
+			.state('stars', {
+				url:'/stars',
+				templateUrl:'components/stars/stars.tpl.html',
+				controller: 'starsCtrl as vm'
+			});
+
 	});
+
+
 

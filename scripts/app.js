@@ -17,6 +17,14 @@ angular
 				url:'/new',
 				templateUrl:'components/stars/new/stars.new.tpl.html',
 				controller: 'newStarsCtrl as vm'
+			})
+			.state('stars.edit', {
+				url:'/edit/:id',//we put a : ahead of it, so id is variable, which is picked up by the id in state.go
+				templateUrl:'components/stars/edit/stars.edit.tpl.html',
+				controller: 'editStarsCtrl as vm',
+				params:{
+					star:null
+				}
 			});
 
 	});

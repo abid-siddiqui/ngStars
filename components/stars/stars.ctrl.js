@@ -31,6 +31,10 @@
 				vm.stars.push(star);
 				showToast('Star Saved!');
 			});
+
+			$scope.$on('editSaved', function(event, message){
+				showToast(message);
+			});
 			
 
 			var contact = {
@@ -59,9 +63,10 @@
 			}
 
 			function editStar(star) {
-				vm.editing = true;
-				openSidebar();
-				vm.star = star;
+				$state.go('stars.edit', {
+					id:star.id,
+					star:star
+				});
 			}
 
 			function saveEdit(){

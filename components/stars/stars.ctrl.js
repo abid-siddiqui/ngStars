@@ -26,6 +26,13 @@
 
 			});
 
+			$scope.$on('newStar', function(event, star){
+				star.id = vm.stars.length + 1;
+				vm.stars.push(star);
+				showToast('Star Saved!');
+			});
+			
+
 			var contact = {
 				name: "Allen",
 				phone: "(555)555-5555",

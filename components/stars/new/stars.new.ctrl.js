@@ -7,6 +7,7 @@
 
 			var vm = this;
 			vm.closeSidebar = closeSidebar;
+			vm.saveStar = saveStar;
 
 			$timeout(function(){
 				$mdSidenav('left').open();		
@@ -26,6 +27,20 @@
 				vm.sidenavOpen = false;
 			}
 
-		})
+			function saveStar(star){
+				if(star) {
+
+					star.contact = {
+						name: "Allen",
+						phone: "(555)555-5555",
+						email:"starTech@gmail.com"
+					}
+
+					$scope.$emit('newStar', star);
+					vm.sidenavOpen = false;
+				}
+			}
+
+		});
 
 })();

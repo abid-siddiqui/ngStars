@@ -12,6 +12,11 @@ angular
 				url:'/stars',
 				templateUrl:'components/stars/stars.tpl.html',
 				controller: 'starsCtrl as vm'
+			})
+			.state('stars.new', {
+				url:'/new',
+				templateUrl:'components/stars/new/stars.new.tpl.html',
+				controller: 'newStarsCtrl as vm'
 			});
 
 	});
